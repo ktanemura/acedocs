@@ -121,7 +121,7 @@ class Editor extends Component {
         $('#editor').bind("keydown click focus", function() {
             if (that.cursor_changed($('#editor'))) {
                 that.setState({
-                    last_position: that.getCursorPosition($('#editor'))
+                    last_position: that.getCursorPosition($('#editor')) + 1
                 });
             }
         });

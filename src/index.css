@@ -37,6 +37,11 @@ body {
     flex-direction: column;
     flex: 1;
   }
+
+  .editor {
+      width: 95%;
+      height: 95%;
+  }
   
   
   .send-message-form{

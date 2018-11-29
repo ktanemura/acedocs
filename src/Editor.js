@@ -13,6 +13,7 @@ class Editor extends Component {
 
     handleChange = e=> {
         this.props.socket.emit('TextUpdate', e.target.value);
+
         this.setState({
             text: e.target.value
         });
@@ -64,8 +65,9 @@ class Editor extends Component {
         this.props.socket.on("UpdateText", data => {
             this.setState({
                 text: data
+            }, () => {
+                this.setCursorPos($('#editor')[0], this.state.last_position);
             });
-            this.setCursorPos($('#editor'), this.state.last_position);
         });
 
         this.setState({
@@ -78,7 +80,6 @@ class Editor extends Component {
                     last_position: that.getCursorPosition($('#editor'))
                 });
             }
-            // console.log(that.cursor_changed($('#editor')));
         });
     }
 
@@ -91,7 +92,7 @@ class Editor extends Component {
                         users={this.props.users}
                     />
                 </div>
-                    <textarea id="editor" class="chat" value={this.state.text} onChange={this.handleChange}></textarea>
+                    <textarea id="editor" className="chat" value={this.state.text} onChange={this.handleChange}></textarea>
             </div>
         );
     }

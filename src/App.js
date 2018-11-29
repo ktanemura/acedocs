@@ -21,7 +21,6 @@ class App extends Component {
         let socket = socketIOClient(server);
 
         socket.on("UsernameSuccess", data => {
-            console.log("DATA IS",data)
             this.setState({
                 currentId: data.name,
                 currentUsername: data.name,
